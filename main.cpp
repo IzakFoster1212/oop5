@@ -1,13 +1,18 @@
 #include <iostream>
+#include "Professor.h"
 #include "Course.h"
 
 int main() {
-    Course course("Объектно-ориентированное программирование");
+    Professor prof("Сажнев Александр Михайлович");
+    Course course("Объектно-ориентированное программирование", &prof);
+
     course.addTopic("Классы и объекты");
-    course.addTopic("Композиция тем");
+    course.addTopic("Агрегация профессора");
 
     std::cout << "Курс: " << course.getName() << "\n";
-    std::cout << "Количество тем: " << course.getTopics().size() << "\n";
+    if (course.getProfessor()) {
+        std::cout << "Преподаватель: " << course.getProfessor()->getName() << "\n";
+    }
 
     return 0;
 }
